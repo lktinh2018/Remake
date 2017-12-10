@@ -1,0 +1,13 @@
+MQTT:
+	+ Public/ subcribe
+	+ QoS
+	+ Retain message
+	+ LWT
+	+ Wildcards
+
+Node-red:
+	+ Use nodes
+	+ Create node
+	+ Dashboard, interaction
+	+ Privallage
+
