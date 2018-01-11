@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html ng-app="app.main">
+  <head>
+    <meta charset="utf-8" />
+    <title>Dash Board</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link rel="stylesheet" type="text/css" href="assets/css/sweetalert.css">
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"> </script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-cookies.js"> </script>
+    <link href="assets/css/main.css" rel="stylesheet" type="text/css" />
+    <script src="assets/js/main/main.js"> </script>
+    <script src="assets/js/services/svAssistant.js"> </script>
+    <script src="/assets/js/main/socket.io.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <!-- <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link href="../assets/global/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+    <link href="../assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/layouts/layout2/css/layout.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/layouts/layout2/css/themes/blue.min.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="../assets/layouts/layout2/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="favicon.ico" /> -->
+  </head>
+  <body ng-controller="mainController">
+
+      <!-- Header -->
+      <div class="header">
+        <div class="left-header">
+          <div class="btnSideBar" ng-click="sideBar()">
+            <i id="iconBtnSideBar" data-ng-class="btnSideBarClass" > </i>
+          </div>
+        </div>
+
+
+
+        <div class="right-header">
+          <div class="sign-out">
+            <i class="fa fa-sign-out" aria-hidden="true"> </i>
+          </div>
+          <div class="noti-icon">
+            <i aria-hidden="true" data-ng-class="voiceClass" ng-click="voice()"></i>
+          </div>
+
+          <div class="loading">
+            <div ng-show="loading">
+              <span class="fa fa-spinner fa-spin"> </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Navigation Bar -->
+      <div class="nav">
+        <ul class="ul-nav">
+          <li class="li-nav" id="user"> <i class="fa fa-user-circle">  </i>  </li>
+          <li class="li-nav"> <i class="icon-home">  </i> <p> Dashboard </p> </li>
+          <li class="li-nav li-nav-widget"> <i class="fa fa-desktop">  </i> <p> Widget </p> </li>
+            <ul class="ul-widget">
+              <li class="li-widget">+ Button </li>
+              <li class="li-widget">+ Button </li>
+              <li class="li-widget">+ Button </li>
+              <li class="li-widget">+ Button </li>
+            </ul>
+          <li class="li-nav"> <i class="fa fa-cog">  </i> <p> Setting </p></li>
+          <li class="li-nav"> <i class="fa fa-info-circle">  </i> <p> About us </p></li>
+
+        </ul>
+      </div>
+
+      <!-- Body -->
+      <div class="article">
+
+        <div class="widget-camera">
+          <iframe src="http://vsh.ddns.net:8081"> </iframe>
+        </div>
+        <div class="widget-camera">
+          <iframe src="http://vsh.ddns.net:8082"> </iframe>
+        </div>
+
+        <div class="widget-button">
+          <div class="label">
+            Device 1
+          </div>
+          <div class="switch">
+            <input id="btn1" class="cmn-toggle cmn-toggle-round" type="checkbox" ng-model="btnval1" ng-click="processControl($event, btnval1)" accesskey="1">
+            <label for="btn1"></label>
+          </div>
+        </div>
+
+        <div class="widget-button">
+          <div class="label">
+            Device 2
+          </div>
+          <div class="switch">
+            <input id="btn2" class="cmn-toggle cmn-toggle-round" type="checkbox" ng-model="btnval2" ng-click="processControl($event, btnval2)" accesskey="2">
+            <label for="btn2"></label>
+          </div>
+        </div>
+
+        <div class="widget-button">
+          <div class="label">
+            Device 3
+          </div>
+          <div class="switch">
+            <input id="btn3" class="cmn-toggle cmn-toggle-round" type="checkbox" ng-model="btnval3" ng-click="processControl($event, btnval3)" accesskey="3">
+            <label for="btn3"></label>
+          </div>
+        </div>
+
+        <div class="widget-button">
+          <div class="label">
+            Device 4
+          </div>
+          <div class="switch">
+            <input id="btn4" class="cmn-toggle cmn-toggle-round" type="checkbox" ng-model="btnval4" ng-click="processControl($event, btnval4)" accesskey="4">
+            <label for="btn4"></label>
+          </div>
+        </div>
+
+        <div class="widget-view">
+          <div class="label">
+            Temperature
+          </div>
+        </div>
+        <div class="widget-view">
+          <div class="label">
+            Humidity
+          </div>
+        </div>
+        <div class="widget-view">
+
+          <div class="label">
+            Pir Alarm
+          </div>
+        </div>
+
+
+        
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<html ng-app="app.users">
+<head>
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="assets/css/addmember.css">
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery-ui.min.js"> </script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"> </script>
+    <script src="assets/js/addmember.js"></script>
+    <script src="assets/js/services/svUsers.js"> </script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="assets/js/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/sweetalert.css">
+
+</head>
+<body ng-controller="userController">
+<!-- multistep form -->
+<form id="msform">
+  <!-- progressbar -->
+  <ul id="progressbar">
+    <li class="active">Account Setup</li>
+    <li>Personal Details</li>
+    <li>Authentication</li>
+  </ul>
+  <!-- fieldsets -->
+  <fieldset>
+    <h2 class="fs-title">Create your account</h2>
+    <h3 class="fs-subtitle">This is step 1</h3>
+    <input type="text" ng-model="formData.username" placeholder="Username"/>
+    <input type="password" ng-model="formData.password" placeholder="Password" />
+    <input type="password" ng-model="formData.cpassword" placeholder="Confirm Password" />
+    <input id="next" type="button" name="next" class="next action-button" value="Next" />
+  </fieldset>
+  <fieldset>
+    <h2 class="fs-title">Personal Details</h2>
+    <h3 class="fs-subtitle">Your personal information</h3>
+    <input type="text" ng-model="formData.email" placeholder="Email" />
+    <input type="text" ng-model="formData.phone" placeholder="Phone Number"/>
+    <select ng-model="formData.secretquestion">
+        <option value=""  selected>Choosing secret question</option>
+        <option value="1" >Where was you born ?</option>
+        <option value="2">Which animal do you like ?</option>
+        <option value="3">Do you like apple ?</option>
+    </select>
+    <input type="text" ng-model="formData.answerquestion" placeholder="Answer" />
+    <input type="button" name="previous" class="previous action-button" value="Previous" />
+    <input type="button" name="next" class="next action-button" value="Next" />
+  </fieldset>
+  <fieldset>
+    <h2 class="fs-title">Authentication</h2>
+    <h3 class="fs-subtitle">Enter code on your device</h3>
+    <input type="text" ng-model="formData.mac" placeholder="MAC Address" />
+    <input type="button" name="previous" class="previous action-button" value="Previous" />
+    <input type="submit" ng-click="createUser()" class="submit action-button" value="Submit" />
+    <p class="text-center" ng-show="loading">
+      <span class="fa fa-spinner fa-spin fa-3x"> </span>
+    </p>
+  </fieldset>
+</form>
+</body>
+</html>

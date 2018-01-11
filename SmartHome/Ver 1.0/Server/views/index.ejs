@@ -1,0 +1,35 @@
+<html ng-app="app.auth">
+<html>
+<head>
+	<title> Login Page </title>
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/index.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/sweetalert.css">
+	<script src="assets/js/sweetalert.min.js"></script>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"> </script>
+	<script src="assets/js/index.js"> </script>
+	<script src="assets/js/services/svAuth.js"> </script>
+</head>
+<body ng-controller="authController">
+	<audio autoplay loop>
+		<source src="assets/audio/kisstherain.mp3" type=audio/mp3>
+	</audio>
+
+	<div class="login">
+		<div class="icon">
+			<i class="fa fa-home" aria-hidden="true"></i>
+		</div>
+		<h1>Login</h1>
+		<form>
+			<input id="username" type="text" ng-model="username" placeholder="Username" required="required" />
+			<br> </br>
+			<input id="password" type="password" ng-model="password" placeholder="Password" required="required" />
+			<br> </br>
+			<button type="submit" class="btn btn-primary btn-large pull-left btn-custom" ng-click="login()">Let Me In </button>
+			<button type="button" class="btn btn-primary btn-large pull-right btn-custom" onclick="addMember()">Add New User </button>
+		</form>
+		<br>
+	</div>
+</body>
+</html>
