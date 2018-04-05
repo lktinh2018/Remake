@@ -12,10 +12,9 @@ void loopTimer() {
 }
 
 void updateLCD() {
-//  readDS1307();
   lcd.clear();
   digitalClockDisplay();
-//  readDHT();
+  readDHT();
   printDHT();
 }
 
