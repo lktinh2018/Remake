@@ -4,25 +4,6 @@ void initNTP() {
   setSyncInterval(300);
 }
 
-void digitalClockDisplay() {
-  //Digital clock display of the time
-  lcd.print(hour());
-  printDigits(minute());
-  printDigits(second());
-  lcd.setCursor(0, 1);
-  lcd.print(day());
-  lcd.print(".");
-  lcd.print(month());
-  lcd.print(".");
-  lcd.print(year());
-}
-
-void printDigits(int digits) {
-  lcd.print(":");
-  if(digits < 10)
-    lcd.print('0');
-  lcd.print(digits);
-}
 /*-------- NTP code ----------*/
 
 const int NTP_PACKET_SIZE = 48; // NTP time is in the first 48 bytes of message
@@ -41,7 +22,7 @@ time_t getNtpTime() {
   uint32_t beginWait = millis();
   while (millis() - beginWait < 3000) {
     int size = Udp.parsePacket();
-    if (size >= NTP_PACKET_SIZE) {
+    if(size >= NTP_PACKET_SIZE) {
       debug("Receive NTP Response");
       Udp.read(packetBuffer, NTP_PACKET_SIZE);  // read packet into the buffer
       unsigned long secsSince1900;

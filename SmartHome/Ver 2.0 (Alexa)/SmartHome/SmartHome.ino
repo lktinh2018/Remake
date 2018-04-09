@@ -10,13 +10,12 @@ void setup() {
   initLCD();
   initWiFi();
   initNTP();
-  initTimer();
+  initTicker();
   initFauxmoESP();
   initWebUpdater();
 }
 
 void loop() {
-  loopTimer();
   loopFauxmoESP();
   loopWebUpdater();
 }

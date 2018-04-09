@@ -5,10 +5,9 @@
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 #include "DHT.h"
-#include "Timer.h"
-#include "WorkScheduler.h"
 #include "fauxmoESP.h"
 #include <TimeLib.h>
+#include <Ticker.h>
 
 //Debug mode
 #define DEBUG_MODE
@@ -36,9 +35,6 @@ int t, h;
 //fauxoESP  instance
 fauxmoESP fauxmo;
 
-//Timer
-WorkScheduler *printToLCD;
-
 // NTP Config
 static const char ntpServerName[] = "0.asia.pool.ntp.org";
 //Timezone
@@ -59,6 +55,9 @@ const char* update_password = "77778888@";
 
 ESP8266WebServer httpServer(80);
 ESP8266HTTPUpdateServer httpUpdater;
+
+//Ticker
+Ticker printToLCD;
 
 void debug(String s) {
   #ifdef DEBUG_MODE
